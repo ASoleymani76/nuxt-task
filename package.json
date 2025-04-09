@@ -1,5 +1,5 @@
 {
-  "name": "Shetabic",
+  "name": "nuxt-task",
   "private": true,
   "overrides": {
     "vue": "latest"
