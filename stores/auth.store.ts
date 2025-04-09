@@ -2,16 +2,18 @@ import { defineStore } from "pinia";
 
 // @ts-ignore
 export const useAuthStore = defineStore("auth", {
-  persist: {
-    storage: piniaPluginPersistedstate.localStorage,
-  },
+  // persist: {
+  //   storage: piniaPluginPersistedstate.localStorage,
+  // },
   state: () => ({
     loggedIn: false as boolean,
     token: "" as string,
     user: null as object | null,
     role: "" as string,
     tempPhoneNumber: null as string | null,
+    suggestions: [],
   }),
+  persist: true,
   getters: {
     isLogged(): boolean {
       return this.loggedIn;
@@ -25,8 +27,15 @@ export const useAuthStore = defineStore("auth", {
     getTempPhoneNumber(): string | null {
       return this.tempPhoneNumber;
     },
+    getSuggestions():Array<any>{
+      return this.suggestions;
+    }
   },
   actions: {
+    addToSuggestions(content:string){
+      this.suggestions.push(content);
+      console.log(this.suggestions)
+    },
     setTempPhoneNumber(number: string) {
       this.tempPhoneNumber = number;
     },

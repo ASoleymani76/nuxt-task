@@ -33,8 +33,8 @@ export default defineNuxtConfig({
 
   modules: [
     "@pinia/nuxt",
+    'pinia-plugin-persistedstate/nuxt',
     "nuxt-swiper",
-    "pinia-plugin-persistedstate/nuxt",
     "@vite-pwa/nuxt",
     "@vueuse/nuxt",
     "@nuxt/fonts",
@@ -122,8 +122,8 @@ export default defineNuxtConfig({
     // Public keys that are exposed to the client
     public: {
       title: "nuxt-task",
-      apiBaseUrlDev: "https://apiv2.simagar.com/",
-      apiBaseUrlBuild: "https://apiv2.simagar.com/",
+      apiBaseUrlDev: "https://mobx.in/",
+      apiBaseUrlBuild: "https://mobx.in/",
       seq: "",
       seqAddress: "",
     },

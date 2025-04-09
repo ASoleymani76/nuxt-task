@@ -30,7 +30,7 @@
       </div>
 
       <div class="col-span-2 flex flex-row justify-end items-center">
-        <div class="flex justify-center items-center w-[40px] h-[40px] rounded-[8px] bg-gray-50 cursor-pointer">
+        <div @click="showSearchModal = true" class="flex justify-center items-center w-[40px] h-[40px] rounded-[8px] bg-gray-50 cursor-pointer">
           <LazyIcon name="icon:task-search-normal" size="25" class="" />
         </div>
       </div>
@@ -140,7 +140,7 @@
             <LazyIcon name="icon:task-profile" size="25" class="" />
           </div>
 
-          <div class="flex justify-center items-center w-[40px] h-[40px] rounded-[8px] bg-gray-50 cursor-pointer">
+          <div @click="showSearchModal = true" class="flex justify-center items-center w-[40px] h-[40px] rounded-[8px] bg-gray-50 cursor-pointer">
             <LazyIcon name="icon:task-search-normal" size="25" class="" />
           </div>
         </div>
@@ -167,6 +167,15 @@
       </Transition>
     </div>
     <!-- MobileMegaMenu Modal Region End  -->
+
+    <!--  Search Modal  -->
+    <transition name="modal">
+      <LazyModalSearchBarModal
+          v-if="showSearchModal"
+          @hide-search-bar-modal="showSearchModal = false"
+      />
+    </transition>
+    <!--  Search Modal  -->
   </header>
 </template>
 
@@ -219,34 +228,6 @@ watch(route, async (val) => {
 
 // Props
 const props = defineProps({});
-
-// Computed
-
-// Hooks
-onMounted(() => {
-  // body.value = document ? document?.getElementsByTagName("body")[0] : null;
-  // if (body.value) {
-  //   body.value.addEventListener("scroll", handleScroll);
-  // }
-});
-onBeforeUnmount(() => {
-  // body.value.removeEventListener("scroll", handleScroll);
-});
-
-// Methods
-function handleScroll() {
-  if (body.value.scrollTop > currentScrollState.value + 200) {
-    currentScrollState.value = body.value.scrollTop;
-    showBanner.value = false;
-  }
-  if (currentScrollState.value > body.value.scrollTop + 200) {
-    currentScrollState.value = body.value.scrollTop;
-    showBanner.value = true;
-  }
-  if (body.value.scrollTop < 100) {
-    showBanner.value = true;
-  }
-}
 </script>
 
 <style scoped></style>

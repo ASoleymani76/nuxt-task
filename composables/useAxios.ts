@@ -21,8 +21,8 @@ export const useAxios = (form: Boolean) => {
     const axiosInstance = axios.create({
         baseURL:
             process.env.NODE_ENV === "production"
-                ? config.public.apiBaseUrlBuild + "api/v1/"
-                : config.public.apiBaseUrlDev + "api/v1/",
+                ? config.public.apiBaseUrlBuild
+                : config.public.apiBaseUrlDev,
         headers: {
             "Content-type": form ? "multipart/form-data" : "application/json",
             ...authHeader.value,
