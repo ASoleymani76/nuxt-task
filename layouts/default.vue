@@ -10,9 +10,7 @@
       <div class="">
         <slot />
       </div>
-      <LazyMainFooter></LazyMainFooter>
     </div>
-    <NuxtPwaManifest />
   </div>
 </template>
 
@@ -21,18 +19,12 @@ import Toast from "@/components/utilities/Toast.vue";
 import LoadingSpinner from "../components/utilities/loadingSpinner.vue";
 
 // Variables
-const { locale, localeProperties } = useI18n();
 const route = useRoute();
 const xlAndSmaller = useUtils().xlAndSmaller;
 
-// Computed
-const direction = computed(() => {
-  return localeProperties.value.dir;
-});
-
 useHead({
   bodyAttrs: {
-    dir: direction,
+    dir: 'rtl',
   },
 });
 
