@@ -38,19 +38,6 @@
               </template>
               <LazyUtilitiesEmptyView v-else-if="search !== ''" class="my-4" />
             </div>
-
-            <div v-if="searchType === 3" class="px-2">
-              <div
-                  class="w-full flex flex-row justify-start items-center my-2 p-1"
-              >
-              <span
-                  class="px-1 py-.5 border border-gray-700 flex flex-row justify-center items-center text-gray-700 transition-all hover:text-white hover:bg-black cursor-pointer"
-                  @click="searchType = 1"
-              >
-                <i class="ri-arrow-left-s-line transform rtl:rotate-180" />
-              </span>
-              </div>
-            </div>
           </div>
           <!--   Search results   -->
         </div>
@@ -64,7 +51,6 @@ import { useApi } from "~/composables/useApi";
 import {useAuthStore} from "~/stores/auth.store";
 
 // Variables
-const searchType = ref(1);
 const search = ref("");
 const timeout = ref(null);
 const authStore = useAuthStore();
@@ -89,13 +75,9 @@ const debouncedSearchQuery = computed({
     }
   },
 });
-// const suggests = computed(() => {
-//   return appStore.getSuggestions;
-// });
 
 // Hooks
 onMounted(async () => {
-  console.log(authStore.getSuggestions)
   suggests.value = authStore.getSuggestions;
 })
 
