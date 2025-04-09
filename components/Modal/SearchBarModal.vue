@@ -7,10 +7,10 @@
         class="w-full h-full backdropBlur bg-black/90 absolute inset-0 flex flex-col items-center justify-center"
       />
       <div class="w-full absolute flex flex-col items-center">
-        <div class="w-full h-[4rem] lg:h-[10rem] flex flex-row justify-start items-start text-white  px-4">
-          <LazyIcon name="icon:task-close-square" size="50" class="text-gray-700 cursor-pointer" @click="hideModal"/>
+        <div class="w-full h-[4rem] lg:h-[10rem] flex flex-row justify-start items-start text-white px-4">
+          <LazyIcon name="icon:task-close-square" size="50" class="text-gray-300 cursor-pointer" @click="hideModal"/>
         </div>
-        <div class="w-full lg:w-1/2 rounded-sm mx-1/24 opacity-100 h-screen lg:h-min">
+        <div class="w-full lg:w-1/2 rounded-sm mx-1/24 opacity-100 h-screen lg:h-min px-4">
 
           <!--  Search Input  -->
           <div class="w-full flex flex-row justify-between items-center relative p-2 bg-white rounded-xl">
@@ -32,8 +32,8 @@
             <div>
               <template v-if="suggests.length > 0">
                 <div v-for="(suggest,idx) in suggests" class="w-full p-4 flex flex-row justify-start items-center gap-x-2">
-                  <LazyIcon name="icon:task-close-square" size="30" class="text-gray-700 cursor-pointer"/>
-                  <span class="text-white text-base">{{ suggest }}</span>
+                  <LazyIcon @click="removeSuggest(suggest)" name="icon:task-close-square" size="30" class="text-gray-300 cursor-pointer"/>
+                  <span @click="debouncedSearchQuery = suggest" class="text-white text-base cursor-pointer">{{ suggest }}</span>
                 </div>
               </template>
               <LazyUtilitiesEmptyView v-else-if="search !== ''" class="my-4" />
@@ -123,6 +123,10 @@ function addSuggestion() {
   if (search.value !== "") {
     authStore.addToSuggestions(search.value);
   }
+}
+
+function removeSuggest(data){
+  authStore.removeFromSuggestions(data);
 }
 
 function hideModal() {

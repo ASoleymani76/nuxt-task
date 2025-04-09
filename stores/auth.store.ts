@@ -2,9 +2,9 @@ import { defineStore } from "pinia";
 
 // @ts-ignore
 export const useAuthStore = defineStore("auth", {
-  // persist: {
-  //   storage: piniaPluginPersistedstate.localStorage,
-  // },
+  persist: {
+    storage: persistedState.localStorage,
+  },
   state: () => ({
     loggedIn: false as boolean,
     token: "" as string,
@@ -13,7 +13,6 @@ export const useAuthStore = defineStore("auth", {
     tempPhoneNumber: null as string | null,
     suggestions: [],
   }),
-  persist: true,
   getters: {
     isLogged(): boolean {
       return this.loggedIn;
@@ -34,7 +33,12 @@ export const useAuthStore = defineStore("auth", {
   actions: {
     addToSuggestions(content:string){
       this.suggestions.push(content);
-      console.log(this.suggestions)
+    },
+    removeFromSuggestions(content: string){
+      let idx = this.suggestions.findIndex(e => e === content)
+      if (idx > -1) {
+        this.suggestions.splice(idx, 1);
+      }
     },
     setTempPhoneNumber(number: string) {
       this.tempPhoneNumber = number;

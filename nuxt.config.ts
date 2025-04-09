@@ -33,7 +33,7 @@ export default defineNuxtConfig({
 
   modules: [
     "@pinia/nuxt",
-    'pinia-plugin-persistedstate/nuxt',
+    '@pinia-plugin-persistedstate/nuxt',
     "nuxt-swiper",
     "@vite-pwa/nuxt",
     "@vueuse/nuxt",
