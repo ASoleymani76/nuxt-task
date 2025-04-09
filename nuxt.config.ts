@@ -41,6 +41,58 @@ export default defineNuxtConfig({
     "@nuxt/icon",
   ],
 
+  pwa: {
+    registerType: "autoUpdate",
+    manifest: {
+      // this restricts user navigation to some directories of website
+      // scope: "https://example.com/subdirectory/",
+      name: "nuxt-task",
+      short_name: "nuxt-task",
+      theme_color: "#ffffff",
+      description: "",
+      background_color: "#000000",
+      dir: "rtl",
+      lang: "fa",
+      display: "standalone",
+      start_url: "/",
+      icons: [
+        {
+          src: "/favicon/android-chrome-192x192v1.png",
+          sizes: "192x192",
+          type: "image/png",
+        },
+        {
+          src: "/favicon/android-chrome-512x512v1.png",
+          sizes: "512x512",
+          type: "image/png",
+        },
+        {
+          src: "/favicon/favicon-16x16v1.png",
+          sizes: "16x16",
+          type: "image/png",
+        },
+        {
+          src: "/favicon/apple-touch-iconv1.png",
+          sizes: "180x180",
+          type: "image/png",
+        },
+        {
+          src: "/favicon/favicon-32x32v1.png",
+          sizes: "32x32",
+          type: "image/png",
+        },
+        {
+          src: "/favicon/faviconv1.ico",
+          sizes: "16x16",
+          type: "image/ico",
+        },
+      ],
+    },
+    workbox: {
+      cleanupOutdatedCaches: true,
+    },
+  },
+
   icon: {
     provider: "server",
     fallbackToApi: false,

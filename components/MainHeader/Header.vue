@@ -4,47 +4,37 @@
     class="w-full h-max flex flex-col justify-center items-center bg-white"
   >
     <!--  Mobile Navbar  -->
-<!--    <nav-->
-<!--      class="w-full xl:hidden grid grid-cols-12 justify-between items-center py-2 gap-2 px-4 shadow-[0px_0px_4px_0px_rgba(0,0,0,0.25)]"-->
-<!--    >-->
-<!--      <label-->
-<!--        class="col-span-2 flex flex-row justify-start items-center"-->
-<!--        for="showMobileSearch"-->
-<!--        @click="showMobileMegaMenu = true"-->
-<!--      >-->
-<!--        <LazyIcon name="icon:hamburger-menu" size="20" />-->
-<!--      </label>-->
+    <nav
+      class="w-full xl:hidden grid grid-cols-12 justify-between items-center py-2 gap-2 px-4 shadow-[0px_0px_4px_0px_rgba(0,0,0,0.25)]"
+    >
+      <label
+        class="col-span-2 flex flex-row justify-start items-center"
+        for="showMobileSearch"
+        @click="showMobileMegaMenu = true"
+      >
+        <LazyIcon name="icon:hamburger-menu" size="20" />
+      </label>
 
-<!--      <div-->
-<!--        class="col-span-8 flex flex-row justify-center items-center gap-2 relative"-->
-<!--      >-->
-<!--        <nuxt-link-->
-<!--          to="/"-->
-<!--          class="text-gray-800 flex flex-row justify-center items-center font-bold text-xl"-->
-<!--        >-->
-<!--          <img-->
-<!--            v-if="locale === 'fa'"-->
-<!--            class="w-max h-[3rem] object-contain"-->
-<!--            src="/logo.png"-->
-<!--            :alt="$t('شتابیک')"-->
-<!--          />-->
-<!--          <img-->
-<!--            v-if="locale === 'en'"-->
-<!--            class="w-max h-[3rem] object-contain"-->
-<!--            src="/logo.png"-->
-<!--            :alt="$t('شتابیک')"-->
-<!--          />-->
-<!--        </nuxt-link>-->
-<!--      </div>-->
+      <div
+        class="col-span-8 flex flex-row justify-center items-center gap-2 relative"
+      >
+        <nuxt-link
+          to="/"
+          class="text-gray-800 flex flex-row justify-center items-center font-bold text-xl"
+        >
+          <img
+            class="w-max h-[3rem] object-contain"
+            src="/logo.png"
+          />
+        </nuxt-link>
+      </div>
 
-<!--      <div class="col-span-2 flex flex-row justify-end items-center">-->
-<!--        <div-->
-<!--          class="rounded-full bg-secondary text-white px-4 py-2 text-nowrap cursor-pointer text-xs"-->
-<!--        >-->
-<!--          {{ $t("ورود / ثبت‌نام") }}-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </nav>-->
+      <div class="col-span-2 flex flex-row justify-end items-center">
+        <div class="flex justify-center items-center w-[40px] h-[40px] rounded-[8px] bg-gray-50 cursor-pointer">
+          <LazyIcon name="icon:task-search-normal" size="25" class="" />
+        </div>
+      </div>
+    </nav>
     <!--  Mobile Navbar  -->
 
     <!--  Desktop Navbar  -->
@@ -135,16 +125,23 @@
         </div>
 
         <div class="flex flex-row justify-end items-center gap-x-2">
-          <div class="flex justify-center items-center w-[40px] h-[40px] rounded-[8px] p-4 bg-gray-50">
+
+          <div class="flex justify-center items-center w-[40px] h-[40px] rounded-[8px] p-4 bg-gray-50 cursor-pointer">
             <div class="flex justify-center items-center bg-[#EEEEEE] rounded-[4px] w-[20px] h-[20px] p-1.5">
-              <LazyIcon name="icon:chevron-left" size="16" class="[&_*]:fill-gray-100 text-white" />
+              <LazyIcon name="icon:chevron-left" size="16" class="text-gray-400" />
             </div>
           </div>
 
-          <div class="flex justify-center items-center w-[40px] h-[40px] rounded-[8px] p-4 bg-gray-50">
-            <div class="flex justify-center items-center bg-[#EEEEEE] rounded-[4px] w-[20px] h-[20px] p-1.5">
-              <LazyIcon name="icon:chevron-left" size="16" class="[&_*]:fill-gray-100 text-white" />
-            </div>
+          <div class="flex justify-center items-center w-[40px] h-[40px] rounded-[8px] bg-gray-50 cursor-pointer">
+            <LazyIcon name="icon:task-notification" size="25" class="" />
+          </div>
+
+          <div class="flex justify-center items-center w-[40px] h-[40px] rounded-[8px] bg-gray-50 cursor-pointer">
+            <LazyIcon name="icon:task-profile" size="25" class="" />
+          </div>
+
+          <div class="flex justify-center items-center w-[40px] h-[40px] rounded-[8px] bg-gray-50 cursor-pointer">
+            <LazyIcon name="icon:task-search-normal" size="25" class="" />
           </div>
         </div>
       </div>
@@ -164,7 +161,7 @@
       >
         <MobileMegaMenuModal
           v-if="showMobileMegaMenu"
-          :categories="categories"
+          :data="pages"
           @hideSearchModal="showMobileMegaMenu = false"
         />
       </Transition>
@@ -191,6 +188,28 @@ const authStore = useAuthStore();
 const showDesktopSidebar = ref(false);
 let body = ref(null);
 const showBanner = ref(false);
+const pages = shallowRef([
+  {
+    title:'سرویس ها',
+    link:'#'
+  },
+  {
+    title:'آکادمی ',
+    link:'#'
+  },
+  {
+    title:'فایل های موبیکس کیوب',
+    link:'#'
+  },
+  {
+    title:'ماشین حساب درآمد',
+    link:'#'
+  },
+  {
+    title:'سوالات متداول',
+    link:'#'
+  },
+])
 
 // Watches
 watch(route, async (val) => {

@@ -1,19 +1,16 @@
 <template>
   <!-- Put this part before </body> tag -->
   <aside class="modal modal-open w-full h-screen max-h-screen z-50">
-    <div class="modal-box !w-full !max-w-full h-screen max-h-screen rounded-none flex flex-col justify-start items-start bg-white dark:bg-mutedDark">
+    <div class="modal-box !w-full !max-w-full h-screen max-h-screen rounded-none flex flex-col justify-start items-start bg-white">
       <div class="w-full flex flex-row justify-between items-center mb-5">
-        <LazyUtilitiesThemeController/>
-        <nuxt-link
-            class="col-span-2 flex flex-row justify-end items-center"
-            title="صفحه اصلی"
-            to="/"
+        <strong
+            class="col-span-2 flex flex-row justify-end items-center text-gray-600"
         >
-          <LazyBaseLanguageSwitcher></LazyBaseLanguageSwitcher>
-        </nuxt-link>
+          منو
+        </strong>
         <div class="flex flex-row justify-center items-center">
           <label class="" for="showMobileSearch" @click="hideModal">
-<!--            <LazyIconsCloseMenuIcon class="[&_*]:stroke-primary w-8 h-8 font-semibold"></LazyIconsCloseMenuIcon>-->
+            <LazyIcon name="icon:task-close-square" size="36" class="text-gray-700"></LazyIcon>
           </label>
         </div>
       </div>
@@ -30,16 +27,17 @@
               class="text-base text-gray-600 dark:text-white font-semibold ShortDescriptionIndex1 text-center"
               exact-active-class="!text-primary"
               @click="hideModal"
-          >{{ $t(p.title) }}
+          >
+            {{ p.title }}
           </NuxtLink>
-          <NuxtLink
-              v-for="c in p.children"
-              :title="c.title"
-              :to="c.link"
-              class="text-sm text-gray-500 dark:text-gray-300 my-1 ShortDescriptionIndex1 text-center"
-              exact-active-class="!text-primary dark:!text-secondary"
-          >- {{ c.title }}
-          </NuxtLink>
+<!--          <NuxtLink-->
+<!--              v-for="c in p.children"-->
+<!--              :title="c.title"-->
+<!--              :to="c.link"-->
+<!--              class="text-sm text-gray-500 dark:text-gray-300 my-1 ShortDescriptionIndex1 text-center"-->
+<!--              exact-active-class="!text-primary dark:!text-secondary"-->
+<!--          >- {{ c.title }}-->
+<!--          </NuxtLink>-->
         </div>
 
       </div>
@@ -49,20 +47,11 @@
 
 <script lang="ts" setup>
 // Variables
-const { locale, localeProperties } = useI18n();
 const isOpen = ref(false);
 const props = defineProps({
   data: {
     type: Array,
     default: [],
-  },
-  categories: {
-    type: Array,
-    default: [],
-  },
-  showLanguageSwitcher: {
-    type: Boolean,
-    default: false,
   },
 });
 
