@@ -116,11 +116,11 @@
           </div>
 
           <div class="text-gray-700 text-base text-nowrap">
-            <span class="text-base text-gray-700">ماشین حساب درآمد</span>
+            <NuxtLink to="/" class="text-base text-gray-700">ماشین حساب درآمد</NuxtLink>
           </div>
 
           <div class="text-gray-700 text-base text-nowrap">
-            <span class="text-base text-gray-700">سوالات متداول</span>
+            <NuxtLink to="/test" class="text-base text-gray-700">سوالات متداول</NuxtLink>
           </div>
         </div>
 

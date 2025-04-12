@@ -1,6 +1,7 @@
-import useRequestCenter from "./useRequests";
+import useRepositoryRequests from "~/composables/useRepositoryRequests";
 
 export const useApi = {
     // SignUp & Login
-    search: useRequestCenter('sample1/', 'GET'),
+    search: useRepositoryRequests('sample1/', 'GET'),
+    getProductBySeoUrl: useRepositoryRequests('Products/GetBySeoUrl','GET'),
 }

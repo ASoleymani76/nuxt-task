@@ -12,6 +12,7 @@
           <h1
               class="text-primary dark:text-secondary text-base xl:text-xl 2xl:text-2xl font-bold"
           >
+            {{ props.error.statusCode }}
             {{
               props.error.statusCode === 410 ? 'به نظر میاد صفحه ای که دنبالشی دیگه وجود نداره! بیا برگردیم به دنیای خودمون' : 'اینجا چیزی پیدا نمیشه! بیا برگردیم به دنیای خودمون'
             }}

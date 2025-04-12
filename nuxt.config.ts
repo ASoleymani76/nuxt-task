@@ -122,8 +122,8 @@ export default defineNuxtConfig({
     // Public keys that are exposed to the client
     public: {
       title: "nuxt-task",
-      apiBaseUrlDev: "https://mobx.in/",
-      apiBaseUrlBuild: "https://mobx.in/",
+      apiBaseUrlDev: "https://api.ariaexport.com/",
+      apiBaseUrlBuild: "https://api.ariaexport.com/",
       seq: "",
       seqAddress: "",
     },
